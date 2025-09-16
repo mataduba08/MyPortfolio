@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Mataduba</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="branding">
+      <h2>Mataduba</h2>
+      <p>Aspiring Technology Degree Apprentice</p>
+    </div>
+    <nav>
+      <ul class="nav-tabs">
+        <li><a href="MyPortfolio.html">Home</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contact-section fade-in">
+    <h1>Let's have a chat!</h1>
+    <p>If you’d like to collaborate, ask a question or have any other inquiries, please use my email or send a message below.</p>
+
+    <!-- ✅ Formspree Integration -->
+    <form action="https://formspree.io/f/mgvljojw" method="POST" class="contact-form">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <!-- Optional: Redirect after submission -->
+      <input type="hidden" name="_next" value="https://mataduba.github.io/thankyou.html">
+
+      <button type="submit" class="btn primary">Send Message</button>
+    </form>
+
+    <div class="socials">
+      <p>Or reach me via:</p>
+      <a href="mailto:matasdubauskas08@gmail.com">Email</a> |
+      <a href="tel:+447399687053">Phone</a> |
+      <a href="https://www.youtube.com/@Techbuilderforfun" target="_blank">YouTube</a>
+      <input type="hidden" name="_next" value="https://mataduba.github.io/myportfolio/thankyou.html">
+    </div>
+  </main>
+
+</body>
+</html>
