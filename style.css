@@ -1,21 +1,24 @@
-/* Global Dark Theme */
+/* Reset and Fullscreen Setup */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Global Dark Theme with Gradient */
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #000;
+  background: linear-gradient(to bottom, #0a1f44, #000000);
   color: #fff;
   line-height: 1.6;
 }
 
 /* Fade-in Animation */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .fade-in {
@@ -58,45 +61,65 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.nav-tabs li a:hover,
-.nav-tabs li a.active {
+.nav-tabs li a:hover, .nav-tabs li a.active {
   background-color: #4A90E2;
   color: #fff;
 }
 
-/* Hero Split Layout */
+/* Hero Split Layout - Define a split layout */
 .hero-split {
   display: flex;
   flex-wrap: wrap;
-  min-height: 80vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Stretch to full screen height */
+  align-items: center;
+  position: relative;
 }
 
+/* Hero Text - Position on the left half */
 .hero-text {
   flex: 1;
   padding: 4rem 2rem;
-  max-width: 600px;
-  background-color: #000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   opacity: 0;
+  animation: fadeIn 1.2s ease-out forwards;
   animation-delay: 0.3s;
+  z-index: 2;
+  max-width: 50%; /* Limit to left half */
 }
 
+/* Hero Image - Stretch to full screen height on the right half */
 .hero-image.full-bg {
   flex: 1;
-  background-image: url('https://wallpaperaccess.com/full/7223667.jpg'), url('https://knowledge.boc-group.com/wp-content/uploads/2019/08/Technology-Portfolio-Management.jpg');
+  height: 100vh; /* Full screen height */
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(10, 31, 68, 0.8)), 
+                     url('https://wallpaperaccess.com/full/7223667.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100%;
-  opacity: 0;
+  opacity: 1;
+  transition: opacity 0.6s ease, visibility 0s linear 0.6s;
+  animation: fadeIn 1.2s ease-out forwards;
   animation-delay: 0.6s;
+  max-width: 50%; /* Limit to right half */
+  position: relative;
+  z-index: 0;
+}
+
+/* Scroll-based fade effect with complete disappearance */
+.hero-image.full-bg.fade-out {
+  opacity: 0; /* Completely transparent */
+  visibility: hidden; /* Remove from layout when faded */
 }
 
 /* Buttons */
 .buttons {
   opacity: 0;
+  animation: fadeIn 1.2s ease-out forwards;
   animation-delay: 0.9s;
 }
 
@@ -129,8 +152,8 @@ body {
 
 /* Projects Section */
 #projects {
-  max-width: 800px;
-  margin: 4rem auto;
+  max-width: 100%; /* Full width for white section */
+  margin: 0 auto; /* Align with hero bottom */
   padding: 0 2rem;
 }
 
@@ -144,6 +167,7 @@ body {
 #projects ul {
   list-style: none;
   padding-left: 0;
+  width: 100%; /* Ensure full width */
 }
 
 #projects ul li {
@@ -153,6 +177,7 @@ body {
   border-left: 4px solid #4A90E2;
   border-radius: 4px;
   color: #fff;
+  width: 100%; /* Ensure full width */
 }
 
 /* Footer */
@@ -160,6 +185,11 @@ footer {
   text-align: center;
   margin-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.socials {
+  margin-top: 2rem;
+  color: #aaa;
 }
 
 .socials a {
@@ -171,10 +201,11 @@ footer {
 .socials a:hover {
   text-decoration: underline;
 }
+
 /* Contact Section */
 .contact-section {
-  max-width: 700px;
-  margin: 4rem auto;
+  max-width: 100%; /* Full width for white section */
+  margin: 0 auto; /* Align with hero bottom */
   padding: 0 2rem;
   text-align: center;
 }
@@ -194,21 +225,34 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  text-align: left;
+  text-align: center; /* Center form elements */
+  width: 100%; /* Ensure full width */
+  max-width: 500px; /* Limit form width for better centering */
+  margin: 0 auto; /* Center the form */
 }
 
 .contact-form label {
   font-weight: 500;
   color: #fff;
+  text-align: left; /* Keep labels left-aligned within form */
 }
 
 .contact-form input,
 .contact-form textarea {
-  padding: 0.75rem;
+  padding: 0.25rem 0.5rem; /* Slimmer padding */
   border: 1px solid #555;
   border-radius: 6px;
   background-color: #111;
   color: #fff;
+  width: 100%;
+  font-size: 0.9rem; /* Slightly smaller text */
+  height: 30px; /* Slimmer height for inputs */
+  text-align: center; /* Center text inside inputs */
+}
+
+.contact-form textarea {
+  height: 100px; /* Slimmer height for textarea */
+  resize: vertical; /* Allow vertical resizing only */
 }
 
 .contact-form input:focus,
@@ -218,19 +262,28 @@ footer {
 }
 
 .contact-form button {
-  align-self: flex-start;
+  align-self: center; /* Center the button */
 }
 
-.socials {
-  margin-top: 2rem;
-  color: #aaa;
+/* White Content Section - Touch the picture */
+.content-section {
+  background-color: #fff;
+  color: #000;
+  width: 100vw; /* Full viewport width */
+  margin: 0;
+  padding: 4rem 2rem; /* Original padding */
+  min-height: 100vh; /* Original height */
+  position: relative;
+  z-index: 1;
+  margin-top: 0; /* Ensure no gap, touching hero bottom */
 }
-
-.socials a {
-  color: #4A90E2;
+footer a {
+  color: #cceeff; /* Very light blue */
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.socials a:hover {
+footer a:hover {
+  color: #ffffff; /* Optional: brighten on hover */
   text-decoration: underline;
 }

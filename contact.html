@@ -42,15 +42,30 @@
       <button type="submit" class="btn primary">Send Message</button>
     </form>
 
+    <p id="current-time">Current Date and Time: Loading...</p>
+
     <div class="socials">
       <p>Or reach me via:</p>
       <a href="mailto:matasdubauskas08@gmail.com">Email</a> |
       <a href="tel:+447399687053">Phone</a> |
-      <a href="https://www.youtube.com/@Techbuilderforfun" target="_blank">YouTube</a>
-      <input type="hidden" name="_next" value="https://mataduba.github.io/myportfolio/thankyou.html">
+      <a href="https://www.youtube.com/@Techbuilderforfun" target="_blank">YouTube</a> |
+      <a href="https://www.linkedin.com/in/matas-dubauskas-48018532a/">Linkedin</a>
     </div>
   </main>
 
+  <script>
+    // Display current date and time
+    const timeElement = document.getElementById('current-time');
+    const now = new Date();
+    const options = { 
+      weekday: 'long', 
+      hour: '2-digit', 
+      minute: '2-digit', 
+      timeZone: 'Europe/London', 
+      timeZoneName: 'short' 
+    };
+    timeElement.textContent = `Current Date and Time: ${now.toLocaleString('en-GB', options)}`;
+  </script>
+
 </body>
 </html>
-
